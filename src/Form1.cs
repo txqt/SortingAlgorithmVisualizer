@@ -1,4 +1,5 @@
-﻿using SortVisualizer.SortAlgorithms;
+﻿using SortingAlgorithmVisualizer.SortAlgorithms;
+using SortVisualizer.SortAlgorithms;
 using System;
 using System.Drawing;
 using System.Linq;
@@ -30,6 +31,9 @@ namespace SortVisualizer
             panelVisualizer.Paint += PanelVisualizer_Paint;
             trackBarSpeed.Minimum = 1;
             trackBarSpeed.Maximum = 1000;
+            cb_animation.Checked = true;
+            trackBarSpeed.Value = 100;
+            txt_trackBarValue.Text = trackBarSpeed.Value.ToString();
         }
 
         private void AlgorithmListInit()
@@ -38,6 +42,7 @@ namespace SortVisualizer
             cbb_algorithm.Items.Add(new ComboboxItem() { Text = "Selection sort", Value = 1 });
             cbb_algorithm.Items.Add(new ComboboxItem() { Text = "Insertion sort", Value = 2 });
             cbb_algorithm.Items.Add(new ComboboxItem() { Text = "Merge sort", Value = 3 });
+            cbb_algorithm.Items.Add(new ComboboxItem() { Text = "Quick sort", Value = 4 });
         }
 
         private void PanelVisualizer_Paint(object sender, PaintEventArgs e)
@@ -82,6 +87,9 @@ namespace SortVisualizer
                 case 3:
                     currentAlgorithm = new MergeSort();
                     break;
+                case 4:
+                    currentAlgorithm = new QuickSort();
+                    break;
                 default:
                     currentAlgorithm = new BubbleSort();
                     break;
@@ -89,7 +97,12 @@ namespace SortVisualizer
 
             if (currentAlgorithm != null)
             {
+                currentAlgorithm.SetAnimation(cb_animation.Checked);
                 await currentAlgorithm.Sort(array, panelVisualizer, delay);
+                if(cb_animation.Checked == false)
+                {
+                    panelVisualizer.Invalidate();
+                }
             }
         }
 
@@ -101,7 +114,7 @@ namespace SortVisualizer
 
             float width = (float)panelVisualizer.Width / array.Length   ;
 
-            using (Pen blackPen = new Pen(Color.Black, 2))
+            using (Pen blackPen = new Pen(Color.Black, 1))
             {
                 for (int i = 0; i < array.Length; i++)
                 {

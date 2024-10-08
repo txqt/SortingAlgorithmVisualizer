@@ -30,8 +30,11 @@ namespace SortVisualizer.SortAlgorithms
                     await CheckPause();
 
                     //redraw
-                    panel.Invalidate();
-                    await Task.Delay(delay);
+                    if (isAnimation)
+                    {
+                        panel.Invalidate();
+                        await Task.Delay(delay);
+                    }
                 }
             }
         }

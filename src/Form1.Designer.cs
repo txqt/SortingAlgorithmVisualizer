@@ -45,6 +45,7 @@
             txt_numEntities = new TextBox();
             label1 = new Label();
             panelVisualizer = new DoubleBufferedPanel();
+            cb_animation = new CheckBox();
             menuStrip1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarSpeed).BeginInit();
@@ -208,11 +209,22 @@
             panelVisualizer.Size = new Size(797, 417);
             panelVisualizer.TabIndex = 11;
             // 
+            // cb_animation
+            // 
+            cb_animation.AutoSize = true;
+            cb_animation.Location = new Point(547, 73);
+            cb_animation.Name = "cb_animation";
+            cb_animation.Size = new Size(82, 19);
+            cb_animation.TabIndex = 12;
+            cb_animation.Text = "Animation";
+            cb_animation.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(821, 567);
+            Controls.Add(cb_animation);
             Controls.Add(panelVisualizer);
             Controls.Add(txt_numEntities);
             Controls.Add(txt_trackBarValue);
@@ -253,5 +265,6 @@
         private TextBox txt_numEntities;
         private Label label1;
         private DoubleBufferedPanel panelVisualizer;
+        private CheckBox cb_animation;
     }
 }

@@ -9,6 +9,7 @@ namespace SortVisualizer.SortAlgorithms
     public abstract class SortAlgorithm
     {
         protected bool isPaused = false;
+        protected bool isAnimation = true;
 
         public abstract Task Sort(int[] array, Panel panel, int delay);
 
@@ -31,5 +32,9 @@ namespace SortVisualizer.SortAlgorithms
         public void Pause() => isPaused = true;
 
         public void Resume() => isPaused = false;
+        public void SetAnimation(bool on)
+        {
+            this.isAnimation = on;
+        }
     }
 }

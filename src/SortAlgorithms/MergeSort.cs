@@ -58,8 +58,11 @@ namespace SortVisualizer.SortAlgorithms
                 }
                 k++;
 
-                panel.Invalidate();
-                await Task.Delay(delay);
+                if (isAnimation)
+                {
+                    panel.Invalidate();
+                    await Task.Delay(delay);
+                }
             }
 
             while (iLeft < n1)
@@ -69,8 +72,11 @@ namespace SortVisualizer.SortAlgorithms
                 iLeft++;
                 k++;
 
-                panel.Invalidate();
-                await Task.Delay(delay);
+                if (isAnimation)
+                {
+                    panel.Invalidate();
+                    await Task.Delay(delay);
+                }
             }
 
             while (iRight < n2)
@@ -80,10 +86,12 @@ namespace SortVisualizer.SortAlgorithms
                 iRight++;
                 k++;
 
-                panel.Invalidate();
-                await Task.Delay(delay);
+                if (isAnimation)
+                {
+                    panel.Invalidate();
+                    await Task.Delay(delay);
+                }
             }
-
         }
     }
 }
